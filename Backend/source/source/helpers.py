@@ -1,15 +1,25 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-def optionHelper(request, view, parameters):
-    meta = view.metadata_class()
-    data = meta.determine_metadata(request, view)
-    data.pop('renders')
-    data.pop('parses')
-    for key in parameters:
-        data[key] = parameters[key]
-    return data
 
+def cleanParameters(parameters):
+    newDict = {}
+    for key in parameters:
+        if parameters[key] is not None:
+            newDict[key] = parameters[key]
+    return newDict
+
+
+def optionHelper(request, view, parameters=None):
+    if parameters is None:
+        meta = view.metadata_class()
+        data = meta.determine_metadata(request, view)
+        data.pop('renders')
+        data.pop('parses')
+        for key in parameters:
+            data[key] = parameters[key]
+        return data
+    return {}
 
 def getStringFromList(list, joiner=' '):
     return joiner.join(list)

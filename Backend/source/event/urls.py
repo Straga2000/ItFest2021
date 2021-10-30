@@ -13,17 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
+from django.conf.urls import url
+from django.urls import include, path
 from rest_framework.authtoken import views
+from .views import getSomeActivity
 
-# do not use mapsAPI, it is not useful or okay right now
+
 urlpatterns = [
-    # we make direct link between baseMaster app and site
-    url(r'^movie/', include('movieAPI.urls')),
-    url(r'^maps/', include('mapsAPI.urls')),
-    url(r'^admin/', admin.site.urls),
-    url('api-token-auth/', views.obtain_auth_token),
-    url(r'', include('authentication.urls')),
-    url(r'^event/', include('event.urls'))
+    url('activity/', getSomeActivity, name='activity'),
 ]

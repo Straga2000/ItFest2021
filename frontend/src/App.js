@@ -6,6 +6,7 @@ import Home from "./Home.jsx";import Profile from "./Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
+class App extends React.Component {
   componentWillMount() {
     this.fetchResponse()
   }
@@ -19,16 +20,6 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
     this.fetchResponse = this.fetchResponse.bind(this)
 
   };
-
-  render() {
-    let {data, completed} = this.state;
-    console.log(data, completed);
-    return(
-        <div>
-          {completed === true ? data['yas'] : 'se intampla ceva oribil'}
-        </div>
-    )
-  }
 
   fetchResponse(){
     console.log('Fetch');
@@ -44,7 +35,13 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
   }
 
   render(){
-return <div>  <Router>
+      let {data, completed} = this.state;
+      console.log(data, completed);
+return <div>
+    <div>
+        {completed === true ? data['yes'] : 'se intampla ceva oribil'}
+    </div>
+    <Router>
 <Switch>
       <Route  path="/home" component={Home}/>
       <Route  path="/login" component={Login}/>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'movieAPI',
     'authentication',
     'mapsAPI',
+    'event'
 ]
 
 MIDDLEWARE = [
@@ -153,6 +154,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 OMDB_KEY = 'a430f7d3'
 OMDB_LINK = 'https://www.omdbapi.com/?'
+
+BORED_LINK = 'http://www.boredapi.com/api/activity/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
