@@ -6,11 +6,18 @@ import Home from "./Home.jsx";import Profile from "./Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-constructor(props) {
-  super(props);
-  this.state = {
-    data: {'yas': 'horrible'},
-    completed: false,
+  componentWillMount() {
+    this.fetchResponse()
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.data,
+      completed: this.props.completed,
+    };
+    this.fetchResponse = this.fetchResponse.bind(this)
+
   };
 
   render() {
