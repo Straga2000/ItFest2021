@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-class App extends React.Component {
+import Register from './Register.jsx';
+import Login from './Login.jsx';
+import Home from "./Home.jsx";import Profile from "./Profile";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+/* import Login from "./Pages/Login";
 
-  componentWillMount() {
-    this.fetchResponse()
-  }
+ */
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
   constructor(props) {
     super(props);
@@ -14,7 +16,11 @@ class App extends React.Component {
       completed: this.props.completed,
     };
 
-    this.fetchResponse = this.fetchResponse.bind(this)
+constructor(props) {
+  super(props);
+  this.state = {
+    data: {'yas': 'horrible'},
+    completed: false,
   };
 
   render() {
@@ -40,6 +46,35 @@ class App extends React.Component {
         })
   }
 
+fetchResponse(){
+  console.log('Fetch');
+  fetch('http://127.0.0.1:8000/random/', {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://127.0.0.1:8000/'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  }).then(response => response.json())
+      .then(data => {
+        this.setState({data:data, completed:true});
+        console.log(data)
+      })
 }
+
+} */
+
+  render(){
+return <div>  <Router>
+<Switch>
+      <Route  path="/home" component={Home}/>
+      <Route  path="/login" component={Login}/>
+      <Route  path="/register" component={Register}/>  
+      <Route  path="/profile" component={Profile}/>
+</Switch>
+</Router>
+
+
+</div>}}
 
 export default App;
