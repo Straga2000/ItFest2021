@@ -1,13 +1,20 @@
-import './App.css';
-import React from 'react';
-import Register from './Register.jsx';
-import Login from './Login.jsx';
-import Home from "./Home.jsx";import Profile from "./Profile";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import "./App.css";
+import React from "react";
+import Register from "./Register.jsx";
+import Login from "./Login.jsx";
+import Home from "./Home.jsx";
+import Profile from "./Profile";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Components
+import Welcome from "./pages/Welcome";
+import GetStarted from "./pages/GetStarted";
+import Nav from "./layout/Nav";
+
 class App extends React.Component {
   componentWillMount() {
-    this.fetchResponse()
+    this.fetchResponse();
   }
 
   constructor(props) {
@@ -16,40 +23,51 @@ class App extends React.Component {
       data: this.props.data,
       completed: this.props.completed,
     };
-    this.fetchResponse = this.fetchResponse.bind(this)
-
-  };
-
-  fetchResponse(){
-    console.log('Fetch');
-    fetch('http://localhost:8000/random/', {
-      method: 'GET',
-    }).then(response => response.json())
-        .then(data => {
-          // this.props.data = data;
-          // this.props.completed = true;
-          this.setState({data:data, completed:true});
-          console.log(this.state)
-        })
+    this.fetchResponse = this.fetchResponse.bind(this);
   }
 
-  render(){
-      let {data, completed} = this.state;
-      console.log(data, completed);
-return <div>
-    <div>
-        {completed === true ? data['yes'] : 'se intampla ceva oribil'}
-    </div>
-    <Router>
-<Switch>
-      <Route  path="/home" component={Home}/>
-      <Route  path="/login" component={Login}/>
-      <Route  path="/register" component={Register}/>  
-      <Route  path="/profile" component={Profile}/>
-</Switch>
-</Router>
+  fetchResponse() {
+    console.log("Fetch");
+    fetch("http://localhost:8000/random/", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // this.props.data = data;
+        // this.props.completed = true;
+        this.setState({ data: data, completed: true });
+        console.log(this.state);
+      });
+  }
 
-
-</div>}}
+  render() {
+    let { data, completed } = this.state;
+    console.log(data, completed);
+    return (
+      <div>
+        <div>
+          {completed === true ? data["yes"] : "se intampla ceva oribil"}
+        </div>
+        <Router>
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/get-started">
+              <GetStarted />
+            </Route>
+            <Route path="/welcome">
+              <Welcome />
+            </Route>
+            <Route path="/">
+              <h1>Page not found!</h1>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
+}
 
 export default App;
