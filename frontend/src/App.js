@@ -3,18 +3,8 @@ import React from 'react';
 import Register from './Register.jsx';
 import Login from './Login.jsx';
 import Home from "./Home.jsx";import Profile from "./Profile";
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-/* import Login from "./Pages/Login";
-
- */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: this.props.data,
-      completed: this.props.completed,
-    };
 
 constructor(props) {
   super(props);
@@ -45,24 +35,6 @@ constructor(props) {
           console.log(this.state)
         })
   }
-
-fetchResponse(){
-  console.log('Fetch');
-  fetch('http://127.0.0.1:8000/random/', {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://127.0.0.1:8000/'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    }
-  }).then(response => response.json())
-      .then(data => {
-        this.setState({data:data, completed:true});
-        console.log(data)
-      })
-}
-
-} */
 
   render(){
 return <div>  <Router>
