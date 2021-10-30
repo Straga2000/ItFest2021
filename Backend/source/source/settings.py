@@ -25,9 +25,6 @@ SECRET_KEY = 'django-insecure-8%_u1+^)l))l+g7r9%ly859)ca!n+dxdu8+aj9tn3a%@i0&^(m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -137,9 +134,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-]
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:3000",
+# ]
+
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     "http://127.0.0.1:3000/.*",
+# ]
+
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://127.0.0.1:3000/",
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -129,8 +129,5 @@ def getUserLocation(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def getRandom(request):
-    response = Response({'this is some data': 'yas'}, status=status.HTTP_200_OK)
-    # response = JsonResponse({'yas': 'this is some data'})
-    response.headers.pop('access-control-allow-headers')
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    response = JsonResponse({'yas': 'this is some data'})
     return response

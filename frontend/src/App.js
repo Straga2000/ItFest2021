@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {'yas': 'horrible'},
-      completed: false,
+      data: this.props.data,
+      completed: this.props.completed,
     };
 
     this.fetchResponse = this.fetchResponse.bind(this)
@@ -19,6 +19,7 @@ class App extends React.Component {
 
   render() {
     let {data, completed} = this.state;
+    console.log(data, completed);
     return(
         <div>
           {completed === true ? data['yas'] : 'se intampla ceva oribil'}
@@ -28,17 +29,14 @@ class App extends React.Component {
 
   fetchResponse(){
     console.log('Fetch');
-    fetch('http://127.0.0.1:8000/random/', {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://127.0.0.1:8000/'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      }
+    fetch('http://localhost:8000/random/', {
+      method: 'GET',
     }).then(response => response.json())
         .then(data => {
+          // this.props.data = data;
+          // this.props.completed = true;
           this.setState({data:data, completed:true});
-          console.log(data)
+          console.log(this.state)
         })
   }
 
