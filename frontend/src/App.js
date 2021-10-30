@@ -5,7 +5,6 @@ import Login from './Login.jsx';
 import Home from "./Home.jsx";import Profile from "./Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-
 class App extends React.Component {
   componentWillMount() {
     this.fetchResponse()

@@ -2,6 +2,17 @@ import React from "react";
 import  {Link} from 'react-router-dom';
 class Home extends React.Component{
 
+ 
+      
+    
+    dict = {
+     
+      firstname: 'firstname',
+      lastname: 'lastname',
+      age:'age',
+      email: 'email',
+      password: 'password',
+      nationality:'nationality'};
     
 render(){ 
     return(
@@ -13,9 +24,9 @@ render(){
         height: '100%'}}>
                 
     <br />
-    <Link to="/login" className="btn btn-primary m-2 w-75">Login</Link>
+    <Link to="/login" className="btn btn-primary m-3 w-40">Login</Link>
             <br />
-    <Link to="/register" className="btn btn-primary m-2 w-75">Register</Link>
+    <Link to="/register" className="btn btn-primary m-3 w-40">Register</Link>
             <br />
            
         </div>

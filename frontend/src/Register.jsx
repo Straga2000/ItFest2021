@@ -1,36 +1,75 @@
 import React from "react";
-import {Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CityLookUp from './CityLookUp.jsx';
 import  {Link} from 'react-router-dom';
 
 class Register extends React.Component{
+  constructor(props) {
+  super(props);
+  this.state = {user:{
+    firstname: 'firstname',
+    lastname: 'lastname',
+    age:'age',
+    email: 'email',
+    password: 'password',
+    nationality:'nationality'
+  }};
+  
+};
+
+
+onChange(event){
+  user[event.target.name] = event.target.value
+  this.setState(user)
+  }
+handleButtonClicked() {
+  console.log(this.state.user);
+}
+
 render(){
     return(<div>
-  <Form style={{width:"30%",marginTop:"200px",marginLeft:"650px"}}>
-<Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>First Name</Form.Label>
-    <Form.Control type="text" placeholder="Enter first name" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Last Name</Form.Label>
-    <Form.Control type="text" placeholder="Enter last name" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-   
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  
-  
- </Form>
+ 
+     
+          <form >
+            <input
+              type="text"
+              name="firstname"
+              value={this.state.user.firstname}
+            onClick={this.onChange.bind(this)}
+            />
+            <input
+              type="text"
+              name="lastname"
+              value={this.state.user.lastname}
+              onClick={this.onChange.bind(this)}
+            />
+             <input
+              type="text"
+              name="age"
+              value={this.state.user.age}
+              onClick={this.onChange.bind(this)}
+            />
+            <input
+              type="email"
+              name="email"
+              value={this.state.user.email}
+              onClick={this.onChange.bind(this)}
+            />
+             <input
+              type="password"
+              name="password"
+              value={this.state.user.password}
+              onClick={this.onChange.bind(this)}
+            />
+             <input
+              type="text"
+              name="nationality"
+              value={this.state.user.nationality}
+              onClick={this.onChange.bind(this)}
+            />
+            <button  onClick={this.handleButtonClicked.bind(user)} type="submit">Submit</button>
+          </form>
+        );
+      
 
  <Link to="/profile" className="btn btn-primary m-2 w-75">Submit</Link>
           
